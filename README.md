@@ -1,5 +1,5 @@
 # Remo
-A controller for SSH for kodi on all Debian distros
+A SSH remote control for Kodi compatible with all Debian distros
 
 # Installation
 
