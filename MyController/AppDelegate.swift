@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  MyController
 //
-//  Created by Gabriele Iannace on 23/03/2020.
-//  Copyright © 2020 Gabriele Iannace. All rights reserved.
+//  Created by Swiftpy on 23/03/2020.
+//  Copyright © 2020 Swiftpy. All rights reserved.
 //
 
 import UIKit

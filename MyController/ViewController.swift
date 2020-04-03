@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  MyController
 //
-//  Created by Gabriele Iannace on 23/03/2020.
-//  Copyright © 2020 Gabriele Iannace. All rights reserved.
+//  Created by Swiftpy on 23/03/2020.
+//  Copyright © 2020 GSwiftpy. All rights reserved.
 //
 
 import UIKit
@@ -32,6 +32,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var muteVolume: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var enterButton: UIButton!
+    @IBOutlet weak var backForwardButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var fastForwardButton: UIButton!
+    @IBOutlet weak var infoButton: UIButton!
+    @IBOutlet weak var screenRefactorButton: UIButton!
     
     //****************************
     
@@ -77,9 +82,9 @@ class ViewController: UIViewController {
     
     func checkForTechnologies(){
         terminalCommandExc(fullCommand: "echo \(input_password!) | sudo -S apt-get install xdotool")
-        sleep(1)
+        sleep(2)
         let response = session.channel.lastResponse
-        print(response)
+        print(response!)
         if (response?.contains("is already the newest version"))!{
             print("sei un tipo ok")
         }
@@ -94,7 +99,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        SSHDisconnect();
+        super.viewDidDisappear(animated)
     }
     
     func SSHConnect(hostname: String, username: String, password: String){
@@ -119,43 +124,59 @@ class ViewController: UIViewController {
     }
     
     @IBAction func logoutAction(_ sender: Any) {
-        session.disconnect()
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func inputAction(_ sender: UIButton) {
         var currentCommand: String!
         switch sender.tag {
+        case screenRefactorButton.tag:
+            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key z")
+            break
+        case infoButton.tag:
+            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key i")
+            break
         case upArrow.tag:
             currentCommand = " Up";
-            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key\(currentCommand!) gabbo");
+            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key\(currentCommand!)");
             break;
-        
+        case backForwardButton.tag:
+            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key r")
+            break
+            
+        case pauseButton.tag:
+            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key space")
+            break
+            
+        case fastForwardButton.tag:
+            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key f")
+            break
+            
         case downArrow.tag:
             currentCommand = " Down";
-            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key\(currentCommand!) gabbo");
+            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key\(currentCommand!)");
             break;
             
         case leftArrow.tag:
             currentCommand = " Left";
-            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key\(currentCommand!) gabbo");
+            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key\(currentCommand!)");
             break;
             
         case rightArrow.tag:
             currentCommand = " Right";
-            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key\(currentCommand!) gabbo");
+            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key\(currentCommand!)");
             break;
         case enterButton.tag:
             currentCommand = " Return";
-            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key\(currentCommand!) gabbo");
+            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key\(currentCommand!)");
             break;
         case upVolume.tag:
             currentCommand = " F10";
-            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key\(currentCommand!) gabbo");
+            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key\(currentCommand!)");
             break
         case downVolume.tag:
             currentCommand = " F9";
-            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key \(currentCommand!) gabbo");
+            terminalCommandExc(fullCommand: "DISPLAY=:'0.0' xdotool key \(currentCommand!)");
             break
         case muteVolume.tag:
             currentCommand = " F8";
@@ -256,12 +277,5 @@ extension ViewController{
             //Nothing
             break
         }
-    }
-}
-
-extension NMSSHChannel{
-    func execute(command: NSString, error: NSError, timeout: NSNumber){
-        
-        print("heyciao")
     }
 }

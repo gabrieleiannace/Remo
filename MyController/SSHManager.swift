@@ -2,8 +2,8 @@
 //  SSHManager.swift
 //  MyController
 //
-//  Created by Gabriele Iannace on 01/04/2020.
-//  Copyright © 2020 Gabriele Iannace. All rights reserved.
+//  Created by Swiftpy on 01/04/2020.
+//  Copyright © 2020 Swiftpy. All rights reserved.
 //
 
 import UIKit

@@ -2,8 +2,8 @@
 //  LoginViewController.swift
 //  MyController
 //
-//  Created by Gabriele Iannace on 01/04/2020.
-//  Copyright © 2020 Gabriele Iannace. All rights reserved.
+//  Created by Swiftpy on 01/04/2020.
+//  Copyright © 2020 Swiftpy. All rights reserved.
 //
 
 import UIKit
@@ -18,6 +18,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var host_textfield: UITextField!
     @IBOutlet weak var username_textfield: UITextField!
     @IBOutlet weak var password_textfield: UITextField!
+    @IBOutlet weak var sshLabel: UILabel!
+    
+    var yourUsername: String?
+    var yourLocalAddress: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +33,6 @@ class LoginViewController: UIViewController {
         host_textfield.text = uDefault.string(forKey: "current_host")
         username_textfield.text = uDefault.string(forKey: "current_hostname")
         password_textfield.text = uDefault.string(forKey: "current_password")
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -122,5 +125,39 @@ extension JGProgressHUDAnimation{
             hud.dismiss(afterDelay: 3.0)
         })
         
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print(textField.tag)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField.tag {
+        case 0:
+            yourLocalAddress = textField.text
+            break
+        case 1:
+            yourUsername = textField.text
+            break
+        default:
+            break
+        }
+        sshLabel.text = "ssh \(yourUsername ?? "yourUsername")@\(yourLocalAddress ?? "yourLocalAddress")"
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        switch textField.tag {
+        case 0:
+            yourLocalAddress = textField.text
+            break;
+        case 1:
+            yourUsername = textField.text
+            break;
+        default:
+            break;
+        }
+        sshLabel.text = "ssh \(yourUsername ?? "yourUsername")@\(yourLocalAddress ?? "yourLocalAddress")"
+        return true
     }
 }
