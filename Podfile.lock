@@ -1,0 +1,24 @@
+PODS:
+  - IQKeyboardManagerSwift (6.5.5)
+  - JGProgressHUD (2.1)
+  - NMSSH (2.3.1)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - JGProgressHUD
+  - NMSSH
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManagerSwift
+    - JGProgressHUD
+    - NMSSH
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
+  NMSSH: cd689ae535a1581a6dd9fd4600ff71247df510a6
+
+PODFILE CHECKSUM: 668bb184b7cae087d790db4f3171e53e81de5303
+
+COCOAPODS: 1.8.4
