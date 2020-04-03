@@ -5,4 +5,4 @@ A controller for SSH for kodi on all Debian distros
 
 Open the main Directory from terminal.
 
-*~$ pod install
+~$ pod install
