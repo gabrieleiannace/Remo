@@ -1,11 +1,17 @@
 # Remo
-A SSH remote control for Kodi compatible with all Debian distros
+
+Remo is a SSH remote control for Kodi that works with all Debian distros.
 
 # Installation
 
-Open the main Directory from terminal.
+To install Remo, open the main directory from terminal and run the command:
 
-~$ pod install
+```rust
+$ pod install
+```
 
 # Screenshot
-![](https://github.com/gabrieleiannace/Remo/blob/master/img_src/IMG_82EE87CCC2F6-1.jpeg?raw=true)
+
+See the screenshot of Remo in action:
+
+![https://github.com/gabrieleiannace/Remo/blob/master/img_src/IMG_82EE87CCC2F6-1.jpeg?raw=true](https://github.com/gabrieleiannace/Remo/blob/master/img_src/IMG_82EE87CCC2F6-1.jpeg?raw=true)
